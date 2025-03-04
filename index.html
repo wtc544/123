@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>稻城亚丁旅游攻略分享</title>
+    <style>
+        body {
+            background-color: rgb(226, 234, 217);
+            margin: 0;
+            height: 2850px;
+            overflow-x: hidden;
+        }
+        .media {
+            background-color: rgb(46, 218, 161);
+            width: 100%;
+            height: 950px;
+            position: relative;
+            overflow: hidden;
+        }
+        .media video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .media h1 {
+            position: relative;
+            z-index: 1;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 20px;
+        }
+        .media h3 {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .h3-container {
+            display: flex;
+            justify-content: left;
+            margin-top: 2px;
+            margin-left: 40px;
+            gap: 20px;
+        }
+        .map {
+            position: relative;
+            width: 100%;
+            height: 950px;
+            border: 2px solid #ccc;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .map::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../media/背景图片.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: -1;
+        }
+        .map img {
+            position: relative;
+            z-index: 1;
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin-left: 50px;
+        }
+        .map-button {
+            padding: 10px 20px;
+            background-color: #21c8e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .map-button:hover {
+            background-color: #0f8cdf;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        .map-button.active {
+            background-color: #0f8cdf;
+            color: rgb(255, 255, 255);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        #back-to-top {
+    position: fixed;
+    bottom: 20px; /* 距离页面底部的距离 */
+    right: 20px; /* 距离页面右侧的距离 */
+    padding: 10px 20px;
+    background-color: #21c8e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease;
+    z-index: 1000; /* 确保按钮在最上层 */
+    opacity: 0; /* 初始状态隐藏按钮 */
+    pointer-events: none; /* 隐藏时不可点击 */
+}
+
+#back-to-top:hover {
+    background-color: #0f8cdf;
+}
+.button-container2 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .button-container2 button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #21c8e2;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button-container2 button:hover {
+            background-color: #0f8cdf;
+        }
+        .content {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        .image-container {
+    display: flex; /* 使用 flex 布局 */
+    flex-wrap: wrap; /* 允许内容换行 */
+    justify-content: center; /* 居中对齐 */
+    gap: 20px; /* 图片之间的间隔 */
+}
+
+.image-container img {
+    width: 250px; /* 图片宽度 */
+    height: 250px; /* 图片高度 */
+    object-fit: cover; /* 保持图片比例，裁剪多余的部分 */
+}
+    </style>
+</head>
+<body>
+    <div class="media">
+        <video autoplay loop muted>
+            <source src="../media/秋天的稻城亚丁，有生之年一定要去一次【4K旅行风光短片】.mp4" type="video/mp4">
+        </video>
+        <div class="h3-container">
+            <h3 id="map">地图</h3>
+            <h3 id="place">景点介绍</h3>
+
+            <h3>功能三</h3>
+            <h3>功能四</h3>
+        </div>
+    </div>
+    <div class="map">
+<!-- <p>景区地处四川西南边缘，甘孜藏族自治州南部，是中国目前保存最完整、最原始的高山自然生态系统之一，呈现出世界美丽的高山峡谷自然风光，是中国香格里拉生态旅游区的核心。</p> -->
+        <div class="button-container">
+            <button class="map-button" data-image="航线.png">航线</button>
+            <button class="map-button" data-image="公路.png">公路</button>
+            <button class="map-button" data-image="景区.png">景区</button>
+        </div>
+        <img class="map-image" src="../media/航线.png" alt="地图图片">
+    </div>
+    <div class="place">
+        <div class="button-container2">
+            <button id="natural">自然景观</button>
+            <button id="cultural">人文景观</button>
+        </div>
+        <div id="natural-content" class="content hidden">
+            <div class="image-container">
+                <img src="../media/自然景观/五色海.png" alt="自然景观1">
+                <img src="../media/自然景观/仙乃日.png" alt="自然景观1">
+                <img src="../media/自然景观/卡斯地狱谷.png" alt="自然景观1">
+                <img src="../media/自然景观/夏诺多吉.png" alt="自然景观1">
+                <img src="../media/自然景观/央迈勇.png" alt="自然景观1">
+                <img src="../media/自然景观/智慧海.png" alt="自然景观1">
+                <img src="../media/自然景观/洛绒牛场.png" alt="自然景观1">
+                <img src="../media/自然景观/牛奶海.png" alt="自然景观1">
+                <img src="../media/自然景观/牛郎神山观景台.png" alt="自然景观1">
+                <img src="../media/自然景观/珍珠海.png" alt="自然景观1">
+                <img src="../media/自然景观/蓝月山谷.png" alt="自然景观1">
+                <img src="../media/自然景观/贡嘎银沟.png" alt="自然景观1">
+                <img src="../media/自然景观/青蛙湖.png" alt="自然景观1">
+            </div>
+        </div>
+        <div id="cultural-content" class="content hidden">
+            <div class="image-container">
+                <img src="../media/人文景观/仁村.png" alt="自然景观1">
+                <img src="../media/人文景观/亚丁村观景台.png" alt="自然景观1">
+                <img src="../media/人文景观/冲古寺.png" alt="自然景观1">
+                <img src="../media/人文景观/叶儿红村.png" alt="自然景观1">
+                <img src="../media/人文景观/圣水门.png" alt="自然景观1">
+            </div>
+        </div>
+    </div>
+    <button id="back-to-top">回到顶部</button>
+    <script>//顶部导航栏
+            const mapButton1 = document.getElementById("map");
+            const mapButton2 = document.getElementById("place");
+        mapButton1.addEventListener("click", function() {
+            window.scrollBy({
+                top: 955,
+                behavior: "smooth"
+            });
+        });
+        mapButton2.addEventListener("click", function() {
+            window.scrollBy({
+                top: 1925,
+                behavior: "smooth"
+            });
+        });
+    </script>
+    <script>//按钮切换地图功能
+        document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll(".map-button");
+    const image = document.querySelector(".map-image");
+    buttons.forEach(button => {
+        button.addEventListener("click", function() {
+            buttons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+            const newImage = button.getAttribute("data-image");
+            image.src = `../media/${newImage}`;
+        });
+    });
+
+    // 页面加载时，自动为第一个按钮添加 active 类，并设置初始图片
+    if (buttons.length > 0) {
+        buttons[0].classList.add("active"); // 为第一个按钮添加 active 类
+        image.src = `../media/${buttons[0].getAttribute("data-image")}`; // 设置初始图片
+    }
+});
+    </script>
+    <script>//回到顶部
+        document.addEventListener("DOMContentLoaded", function() {
+    const backToTopButton = document.getElementById("back-to-top");
+    window.addEventListener("scroll", function() {
+        if (window.scrollY >= 950) {
+            backToTopButton.style.opacity = 1; // 显示按钮
+            backToTopButton.style.pointerEvents = "auto"; // 使按钮可点击
+        } else {
+            backToTopButton.style.opacity = 0; // 隐藏按钮
+            backToTopButton.style.pointerEvents = "none"; // 隐藏时不可点击
+        }
+    });
+    // 点击按钮回到顶部
+    backToTopButton.addEventListener("click", function() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // 平滑滚动到顶部
+        });
+    });
+});
+    </script>
+
+<script>//人文景观或者自然景观
+    document.addEventListener("DOMContentLoaded", function() {
+        const naturalButton = document.getElementById("natural");
+        const culturalButton = document.getElementById("cultural");
+        const naturalContent = document.getElementById("natural-content");
+        const culturalContent = document.getElementById("cultural-content");
+        naturalContent.classList.remove("hidden");
+        naturalButton.addEventListener("click", function() {
+            naturalContent.classList.remove("hidden");
+            culturalContent.classList.add("hidden");
+         });
+
+         culturalButton.addEventListener("click", function() {
+             culturalContent.classList.remove("hidden");
+             naturalContent.classList.add("hidden");
+         });
+    });
+</script>
+</body>
+</html>
